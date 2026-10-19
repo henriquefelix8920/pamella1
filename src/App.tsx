@@ -122,10 +122,10 @@ function AnimatedSection({ children, className = '', id = '', bgVariant = 'defau
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const bgClasses = {
-    default: 'bg-[#10291d]',
-    accent: 'bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]',
-    gold: 'bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]',
-    dark: 'bg-gradient-to-b from-[#10291d] via-[#10291d] to-[#10291d]',
+    default: 'bg-transparent',
+    accent: 'bg-transparent',
+    gold: 'bg-transparent',
+    dark: 'bg-transparent',
   };
 
   return (
@@ -228,20 +228,6 @@ function HeroSection() {
 
   return (
     <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32">
-      {/* Video background */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-video absolute inset-0 w-full h-full object-cover opacity-75"
-          src={PRODUCT.heroVideo}
-        />
-        <div className="absolute inset-0 hero-video-fade" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#10291d]/35 via-transparent to-[#10291d]/20" />
-      </div>
-
       {/* Content */}
       <motion.div
         className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-6 text-center"
@@ -889,7 +875,7 @@ function FAQSection() {
 function FinalCTASection() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]" />
+
 
       <div className="relative z-10 max-w-[700px] mx-auto px-4 sm:px-6 text-center">
         <motion.div
@@ -1041,7 +1027,20 @@ function NavBar() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#10291d] text-[#f5f1e7] overflow-x-hidden">
+    <div className="min-h-screen text-[#f5f1e7] overflow-x-hidden">
+      {/* Vídeo único e fixo como plano de fundo de toda a página */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="hero-video absolute inset-0 w-full h-full object-cover"
+          src={PRODUCT.heroVideo}
+        />
+        <div className="absolute inset-0 hero-video-fade" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#10291d]/35 via-[#10291d]/10 to-[#10291d]/35" />
+      </div>
 
       <NavBar />
       <main>
