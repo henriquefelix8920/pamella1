@@ -101,7 +101,7 @@ function AnimatedButton({ children, href, variant = 'primary', className = '' }:
           animate={{ x: isHovered ? 4 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M13 7l5 5m0 0l-5 5m5-5H6" />
         </motion.svg>
       </span>
     </a>
@@ -144,8 +144,7 @@ function AnimatedSection({ children, className = '', id = '', bgVariant = 'defau
               : bgVariant === 'accent'
               ? 'radial-gradient(ellipse at 70% 50%, rgba(108,99,255,0.08) 0%, transparent 60%)'
               : 'radial-gradient(ellipse at 50% 50%, rgba(108,99,255,0.05) 0%, transparent 60%)',
-            animation: 'gradient-shift 8s ease infinite',
-            backgroundSize: '200% 200%',
+            backgroundSize: '100% 100%',
           }}
         />
       </div>
@@ -331,7 +330,7 @@ function HeroSection() {
                 <div className="w-28 h-28 rounded-xl overflow-hidden border border-[#c8ad70]/35 mb-6 shadow-lg">
                   <img src="/foto3.jpg" alt="Material Investimento Inicial" className="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2"/> style={{ fontFamily: 'var(--font-display)' }}>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                   Investimento Inicial
                 </h3>
                 <p className="text-[#c8ad70] text-sm font-medium mb-4">para Educadores</p>
@@ -347,7 +346,7 @@ function HeroSection() {
               
               {/* Shine effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" 
-                style={{ animation: 'shimmer 3s ease-in-out infinite' }} />
+                 />
             </div>
           </div>
         </motion.div>
@@ -643,7 +642,7 @@ function AuthorSection() {
                 <div className="relative">
                   {/* Animated ring */}
                   <div className="absolute -inset-3 rounded-2xl border border-[#c8ad70]/20"
-                    style={{ animation: 'rotate-slow 20s linear infinite' }} />
+                     />
                   
                   <img
                     src={PRODUCT.author.photo}
@@ -651,7 +650,7 @@ function AuthorSection() {
                     className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover border-2 border-[#c8ad70]/20 relative z-10"
                   />
                   <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-[#52745b]/20 to-[#c8ad70]/20 blur-md -z-10"
-                    style={{ animation: 'glow-pulse 4s ease-in-out infinite' }} />
+                     />
                 </div>
               </motion.div>
               
@@ -718,7 +717,7 @@ function OfferSection() {
           <div className="p-8 md:p-10 glass-surface rounded-2xl text-center relative overflow-hidden">
             {/* Decorative gradient top */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#52745b] via-[#c8ad70] to-[#52745b]"
-              style={{ backgroundSize: '200% 100%', animation: 'shimmer 3s linear infinite' }} />
+              style={{ backgroundSize: '100% 100%' }} />
             
             {/* Corner decorations */}
             <div className="absolute top-4 right-4 w-16 h-16 border border-[#c8ad70]/10 rounded-full" />
@@ -740,7 +739,7 @@ function OfferSection() {
                 >
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#4ade80]/10 flex items-center justify-center">
                     <svg className="w-3.5 h-3.5 text-[#4ade80]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <span className="text-[#e8e8f0] text-sm">{item.title}</span>
@@ -890,57 +889,7 @@ function FAQSection() {
 function FinalCTASection() {
   return (
     <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]" />
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'radial-gradient(ellipse at 50% 50%, rgba(108,99,255,0.15) 0%, transparent 60%)',
-            animation: 'gradient-shift 6s ease infinite',
-            backgroundSize: '200% 200%',
-          }}
-        />
-        {/* Second gradient */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            background: 'radial-gradient(ellipse at 30% 70%, rgba(212,168,83,0.2) 0%, transparent 50%)',
-            animation: 'gradient-shift 10s ease infinite reverse',
-            backgroundSize: '200% 200%',
-          }}
-        />
-      </div>
-
-      {/* Animated geometric shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px]">
-          <div className="absolute inset-0 border border-[#52745b]/[0.06] rounded-full"
-            style={{ animation: 'rotate-slow 25s linear infinite' }} />
-          <div className="absolute inset-8 border border-[#c8ad70]/[0.06] rounded-full"
-            style={{ animation: 'rotate-slow 20s linear infinite reverse' }} />
-          <div className="absolute inset-16 border border-[#52745b]/[0.08] rounded-full"
-            style={{ animation: 'rotate-slow 15s linear infinite' }} />
-        </div>
-      </div>
-
-      {/* Floating particles CSS */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: `${1 + Math.random() * 3}px`,
-              height: `${1 + Math.random() * 3}px`,
-              left: `${Math.random() * 100}%`,
-              background: i % 2 === 0 ? 'rgba(108,99,255,0.5)' : 'rgba(212,168,83,0.5)',
-              animation: `particle-float ${8 + Math.random() * 12}s linear infinite`,
-              animationDelay: `${Math.random() * 8}s`,
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]" />
 
       <div className="relative z-10 max-w-[700px] mx-auto px-4 sm:px-6 text-center">
         <motion.div
