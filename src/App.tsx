@@ -20,7 +20,7 @@ function ElegantIcon({ name, className = 'w-6 h-6' }: { name: ElegantIconName; c
     video: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m10 9 5 3-5 3Z" /></>,
     document: <><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v6h5M9 13h7M9 17h7" /></>,
   };
-  return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
+  return <svg className={`${className} elegant-icon-motion`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
 }
 
 // ═══════════════════════════════════════════
@@ -94,7 +94,7 @@ function AnimatedButton({ children, href, variant = 'primary', className = '' }:
       <span className="relative z-10 flex items-center gap-2">
         {children}
         <motion.svg
-          className="w-5 h-5"
+          className="elegant-icon-motion w-5 h-5"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -227,7 +227,7 @@ function HeroSection() {
   const rotateX = useTransform(scrollYProgress, [0, 0.3], [0, 5]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 md:pt-32">
       {/* Video background */}
       <div className="absolute inset-0 z-0">
         <video
@@ -285,7 +285,7 @@ function HeroSection() {
           >
             <span>Saiba mais</span>
             <motion.svg
-              className="w-4 h-4"
+              className="elegant-icon-motion w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -358,9 +358,9 @@ function HeroSection() {
         animate={{ y: 0 }}
         transition={{ duration: 0.2 }}
       >
-        <div className="w-6 h-10 rounded-full border-2 border-[#d8d2c1]/30 flex items-start justify-center p-1">
+        <div className="w-6 h-10 rounded-full border-2 border-[#d8d2c1]/30 flex items-start justify-center p-1 elegant-icon-motion">
           <motion.div
-            className="w-1.5 h-3 rounded-full bg-[#52745b]"
+            className="w-1.5 h-3 rounded-full bg-[#52745b] elegant-icon-motion"
             animate={{ y: 0 }}
             transition={{ duration: 0.2 }}
           />
@@ -429,7 +429,7 @@ function IdentificationSection() {
               whileHover={{ x: 8, transition: { duration: 0.2 } }}
             >
               <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#52745b]/20 to-[#52745b]/5 flex items-center justify-center group-hover:from-[#52745b]/30 group-hover:to-[#52745b]/10 transition-all duration-300">
-                <svg className="w-4 h-4 text-[#52745b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-[#52745b] elegant-icon-motion" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -500,12 +500,12 @@ function SolutionSection() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: i * 0.04 }}
             >
-              <div className="learning-icon" aria-hidden="true"><ElegantIcon name={topic.icon as ElegantIconName} className="w-6 h-6" /></div>
+              <div className="learning-icon" aria-hidden="true"><ElegantIcon name={topic.icon as ElegantIconName} className="w-6 h-6 elegant-icon-motion" /></div>
               <div className="learning-copy">
                 <h3>{topic.title}</h3>
                 <p>{topic.desc}</p>
               </div>
-              <div className="learning-rule" aria-hidden="true"><ElegantIcon name="target" className="w-5 h-5" /></div>
+              <div className="learning-rule" aria-hidden="true"><ElegantIcon name="target" className="w-5 h-5 elegant-icon-motion" /></div>
             </motion.article>
           ))}
         </div>
@@ -575,7 +575,7 @@ function IncludedSection() {
                   }} />
                 
                 <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#52745b]/20 to-[#c8ad70]/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                  <ElegantIcon name={(iconMap[material.icon] || 'document') as ElegantIconName} className="w-6 h-6" />
+                  <ElegantIcon name={(iconMap[material.icon] || 'document') as ElegantIconName} className="w-6 h-6 elegant-icon-motion" />
                 </div>
                 <div className="relative z-10">
                   <h3 className="text-lg font-semibold text-[#f5f1e7] mb-1 group-hover:text-gradient-gold transition-all duration-300">{material.title}</h3>
@@ -647,7 +647,7 @@ function AuthorSection() {
                   <img
                     src={PRODUCT.author.photo}
                     alt={`Foto de ${PRODUCT.author.name}`}
-                    className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover border-2 border-[#c8ad70]/20 relative z-10"
+                    className="author-portrait-motion w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover border-2 border-[#c8ad70]/20 relative z-10"
                   />
                   <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-[#52745b]/20 to-[#c8ad70]/20 blur-md -z-10"
                      />
@@ -737,12 +737,12 @@ function OfferSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
                 >
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#4ade80]/10 flex items-center justify-center">
-                    <svg className="w-3.5 h-3.5 text-[#4ade80]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#4ade80]/10 flex items-center justify-center elegant-icon-motion">
+                    <svg className="elegant-icon-motion w-3.5 h-3.5 text-[#c8ad70]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.6} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                  <span className="text-[#e8e8f0] text-sm">{item.title}</span>
+                  <span className="text-[#f5f1e7] text-sm">{item.title}</span>
                 </motion.div>
               ))}
             </div>
@@ -849,7 +849,7 @@ function FAQSection() {
                   transition={{ duration: 0.3 }}
                 >
                   <svg
-                    className="w-4 h-4 text-[#52745b]"
+                    className="w-4 h-4 text-[#52745b] elegant-icon-motion"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -999,8 +999,8 @@ function NavBar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? 'py-3 glass-surface shadow-lg shadow-black/20' : 'py-5 bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-[#c8ad70]/15 backdrop-blur-md transition-all duration-300 ${
+        scrolled ? 'py-3 bg-[#10291d]/95 shadow-lg shadow-black/20' : 'py-3 sm:py-4 bg-[#10291d]/88'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
