@@ -1,7 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { PRODUCT } from './config';
-// Cenas 3D removidas para reduzir o custo de renderização e priorizar o vídeo.
+// Ícones editoriais com traço uniforme e discreto.
+
+
+type ElegantIconName = 'chart' | 'lightbulb' | 'bank' | 'building' | 'calendar' | 'target' | 'book' | 'spreadsheet' | 'calculator' | 'video' | 'document';
+
+function ElegantIcon({ name, className = 'w-6 h-6' }: { name: ElegantIconName; className?: string }) {
+  const paths: Record<ElegantIconName, React.ReactNode> = {
+    chart: <><path d="M4 19V5" /><path d="M4 19h16" /><path d="m7 15 4-4 3 2 5-6" /><path d="M16 7h3v3" /></>,
+    lightbulb: <><path d="M9 18h6" /><path d="M10 22h4" /><path d="M8.5 14.5a7 7 0 1 1 7 0c-.9.6-1.5 1.5-1.5 2.5h-4c0-1-.6-1.9-1.5-2.5Z" /></>,
+    bank: <><path d="m3 9 9-6 9 6" /><path d="M4 10h16" /><path d="M6 10v8M10 10v8M14 10v8M18 10v8" /><path d="M3 20h18M2 23h20" /></>,
+    building: <><path d="M4 21V5l8-3 8 3v16" /><path d="M8 8h1M15 8h1M8 12h1M15 12h1M8 16h1M15 16h1" /><path d="M10 21v-3h4v3" /></>,
+    calendar: <><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M7 3v4M17 3v4M3 10h18" /><path d="m8 15 2 2 5-4" /></>,
+    target: <><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1" /><path d="m15 9 5-5M16 4h4v4" /></>,
+    book: <><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22Z" /><path d="M4 5.5V22M8 7h8M8 11h7" /></>,
+    spreadsheet: <><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M3 15h18M9 3v18M15 3v18" /></>,
+    calculator: <><rect x="5" y="2" width="14" height="20" rx="2" /><path d="M8 6h8v4H8zM8 14h2M14 14h2M8 18h2M14 18h2" /></>,
+    video: <><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m10 9 5 3-5 3Z" /></>,
+    document: <><path d="M6 3h8l5 5v13H6z" /><path d="M14 3v6h5M9 13h7M9 17h7" /></>,
+  };
+  return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name]}</svg>;
+}
 
 // ═══════════════════════════════════════════
 // ANIMATED BUTTON COMPONENT
@@ -197,42 +217,6 @@ function Card3D({ children, className = '', delay = 0 }: {
 }
 
 // ═══════════════════════════════════════════
-// CURSOR GLOW EFFECT
-// ═══════════════════════════════════════════
-
-function CursorGlow() {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const handleMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      setVisible(true);
-    };
-    const handleLeave = () => setVisible(false);
-    
-    window.addEventListener('mousemove', handleMove);
-    document.addEventListener('mouseleave', handleLeave);
-    return () => {
-      window.removeEventListener('mousemove', handleMove);
-      document.removeEventListener('mouseleave', handleLeave);
-    };
-  }, []);
-
-  if (!visible) return null;
-
-  return (
-    <motion.div
-      className="fixed pointer-events-none z-[100] mix-blend-screen hidden md:block"
-      animate={{ x: pos.x - 150, y: pos.y - 150 }}
-      transition={{ type: 'spring', damping: 30, stiffness: 200 }}
-    >
-      <div className="w-[300px] h-[300px] rounded-full bg-[radial-gradient(circle,rgba(108,99,255,0.08)_0%,transparent_70%)]" />
-    </motion.div>
-  );
-}
-
-// ═══════════════════════════════════════════
 // HERO SECTION
 // ═══════════════════════════════════════════
 
@@ -259,28 +243,11 @@ function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#10291d]/35 via-transparent to-[#10291d]/20" />
       </div>
 
-      {/* Linhas editoriais discretas */}
-      <div className="hero-linework" aria-hidden="true"><span /><span /><span /></div>
-
-      {/* Fumaça abstrata CSS, sem canvas nem filtros pesados */}
-      <div className="hero-smoke" aria-hidden="true"><span /><span /></div>
-
       {/* Content */}
       <motion.div
         className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-6 text-center"
         style={{ y, opacity, scale }}
       >
-        {/* Badge */}
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-surface mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
-          <span className="text-sm text-[#d8d2c1]">Material de Educação Financeira para Educadores</span>
-        </motion.div>
-
         {/* Title */}
         <motion.h1
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
@@ -323,8 +290,8 @@ function HeroSection() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              animate={{ y: [0, 4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.2 }}
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </motion.svg>
@@ -361,12 +328,10 @@ function HeroSection() {
               }}>
               {/* Inner content */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c8ad70] to-[#e8d7a6] mb-6 flex items-center justify-center shadow-[0_0_30px_rgba(212,168,83,0.3)]">
-                  <svg className="w-8 h-8 text-[#10291d]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
+                <div className="w-28 h-28 rounded-xl overflow-hidden border border-[#c8ad70]/35 mb-6 shadow-lg">
+                  <img src="/foto3.jpg" alt="Material Investimento Inicial" className="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2"/> style={{ fontFamily: 'var(--font-display)' }}>
                   Investimento Inicial
                 </h3>
                 <p className="text-[#c8ad70] text-sm font-medium mb-4">para Educadores</p>
@@ -391,14 +356,14 @@ function HeroSection() {
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.2 }}
       >
         <div className="w-6 h-10 rounded-full border-2 border-[#d8d2c1]/30 flex items-start justify-center p-1">
           <motion.div
             className="w-1.5 h-3 rounded-full bg-[#52745b]"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.2 }}
           />
         </div>
       </motion.div>
@@ -422,14 +387,6 @@ function IdentificationSection() {
   return (
     <AnimatedSection id="identificacao" bgVariant="accent">
       
-      
-      {/* Animated morphing shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-[#52745b]/[0.03] blur-3xl"
-          style={{ animation: 'morph 12s ease-in-out infinite' }} />
-        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-[#c8ad70]/[0.03] blur-3xl"
-          style={{ animation: 'morph 15s ease-in-out infinite reverse' }} />
-      </div>
       
       <div className="relative z-10">
         <motion.div
@@ -492,35 +449,17 @@ function IdentificationSection() {
 
 function SolutionSection() {
   const topics = [
-    { icon: "📊", title: "Organização financeira", desc: "Compreender suas receitas e despesas de forma clara" },
-    { icon: "💡", title: "Primeiros passos nos investimentos", desc: "Conceitos básicos apresentados de forma acessível" },
-    { icon: "🏦", title: "Renda fixa", desc: "Entender CDB e Tesouro Direto como possibilidades" },
-    { icon: "🏢", title: "Fundos imobiliários", desc: "Conhecer o conceito de FIIs e como funcionam" },
-    { icon: "📅", title: "Planejamento de longo prazo", desc: "Pensar no futuro financeiro com mais clareza" },
-    { icon: "🎯", title: "Começar com valores pequenos", desc: "Entender que é possível iniciar com pouco" },
+    { icon: "chart", title: "Organização financeira", desc: "Compreender suas receitas e despesas de forma clara" },
+    { icon: "lightbulb", title: "Primeiros passos nos investimentos", desc: "Conceitos básicos apresentados de forma acessível" },
+    { icon: "bank", title: "Renda fixa", desc: "Entender CDB e Tesouro Direto como possibilidades" },
+    { icon: "building", title: "Fundos imobiliários", desc: "Conhecer o conceito de FIIs e como funcionam" },
+    { icon: "calendar", title: "Planejamento de longo prazo", desc: "Pensar no futuro financeiro com mais clareza" },
+    { icon: "target", title: "Começar com valores pequenos", desc: "Entender que é possível iniciar com pouco" },
   ];
 
   return (
     <AnimatedSection id="conteudo" bgVariant="gold">
       
-      
-      {/* Animated background lines */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute h-[1px] bg-gradient-to-r from-transparent via-[#c8ad70]/10 to-transparent"
-            style={{
-              top: `${20 + i * 15}%`,
-              left: '-10%',
-              right: '-10%',
-              transform: `rotate(${-5 + i * 2}deg)`,
-              animation: `shimmer ${4 + i}s ease-in-out infinite`,
-              animationDelay: `${i * 0.5}s`,
-            }}
-          />
-        ))}
-      </div>
       
       <div className="relative z-10">
         <motion.div
@@ -562,13 +501,12 @@ function SolutionSection() {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: i * 0.04 }}
             >
-              <div className="learning-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
-              <div className="learning-icon" aria-hidden="true"><span>{topic.icon}</span></div>
+              <div className="learning-icon" aria-hidden="true"><ElegantIcon name={topic.icon as ElegantIconName} className="w-6 h-6" /></div>
               <div className="learning-copy">
                 <h3>{topic.title}</h3>
                 <p>{topic.desc}</p>
               </div>
-              <div className="learning-rule" aria-hidden="true">↗</div>
+              <div className="learning-rule" aria-hidden="true"><ElegantIcon name="target" className="w-5 h-5" /></div>
             </motion.article>
           ))}
         </div>
@@ -583,31 +521,15 @@ function SolutionSection() {
 
 function IncludedSection() {
   const iconMap: Record<string, string> = {
-    book: "📘",
-    spreadsheet: "📊",
-    calculator: "🧮",
-    video: "🎬",
+    book: "book",
+    spreadsheet: "spreadsheet",
+    calculator: "calculator",
+    video: "video",
   };
 
   return (
     <AnimatedSection id="materiais" bgVariant="dark">
       
-      
-      {/* Animated background dots */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {Array.from({ length: 15 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-[#52745b]/10"
-            style={{
-              left: `${10 + Math.random() * 80}%`,
-              top: `${10 + Math.random() * 80}%`,
-              animation: `glow-pulse ${3 + Math.random() * 3}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 3}s`,
-            }}
-          />
-        ))}
-      </div>
       
       <div className="relative z-10">
         <motion.div
@@ -654,7 +576,7 @@ function IncludedSection() {
                   }} />
                 
                 <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#52745b]/20 to-[#c8ad70]/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                  {iconMap[material.icon] || '📄'}
+                  <ElegantIcon name={(iconMap[material.icon] || 'document') as ElegantIconName} className="w-6 h-6" />
                 </div>
                 <div className="relative z-10">
                   <h3 className="text-lg font-semibold text-[#f5f1e7] mb-1 group-hover:text-gradient-gold transition-all duration-300">{material.title}</h3>
@@ -677,14 +599,6 @@ function AuthorSection() {
   return (
     <AnimatedSection id="autora" bgVariant="accent">
       
-      
-      {/* Animated background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#c8ad70]/[0.03] rounded-full blur-3xl"
-          style={{ animation: 'morph 10s ease-in-out infinite' }} />
-        <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-[#52745b]/[0.03] rounded-full blur-3xl"
-          style={{ animation: 'morph 12s ease-in-out infinite reverse' }} />
-      </div>
       
       <div className="relative z-10">
         <div className="max-w-[800px] mx-auto">
@@ -772,16 +686,6 @@ function OfferSection() {
   return (
     <AnimatedSection id="oferta" bgVariant="gold">
       
-      
-      {/* Animated rings */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div className="w-[600px] h-[600px] rounded-full border border-[#c8ad70]/[0.05]"
-          style={{ animation: 'rotate-slow 30s linear infinite' }} />
-        <div className="absolute w-[400px] h-[400px] rounded-full border border-[#52745b]/[0.05]"
-          style={{ animation: 'rotate-slow 20s linear infinite reverse' }} />
-        <div className="absolute w-[200px] h-[200px] rounded-full border border-[#c8ad70]/[0.08]"
-          style={{ animation: 'rotate-slow 15s linear infinite' }} />
-      </div>
       
       <div className="relative z-10">
         <motion.div
@@ -892,14 +796,6 @@ function FAQSection() {
   return (
     <AnimatedSection id="faq" bgVariant="dark">
       
-      
-      {/* Animated background */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-[#52745b]/[0.02] rounded-full blur-3xl"
-          style={{ animation: 'morph 10s ease-in-out infinite' }} />
-        <div className="absolute bottom-1/4 right-0 w-[250px] h-[250px] bg-[#c8ad70]/[0.02] rounded-full blur-3xl"
-          style={{ animation: 'morph 12s ease-in-out infinite reverse' }} />
-      </div>
       
       <div className="relative z-10">
         <motion.div
@@ -1197,11 +1093,7 @@ function NavBar() {
 export default function App() {
   return (
     <div className="min-h-screen bg-[#10291d] text-[#f5f1e7] overflow-x-hidden">
-      {/* Cinematic overlays */}
-      <div className="cinematic-vignette" />
-      <div className="film-grain" />
-      
-      <CursorGlow />
+
       <NavBar />
       <main>
         <HeroSection />
