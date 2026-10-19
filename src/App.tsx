@@ -999,8 +999,8 @@ function NavBar() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b border-[#c8ad70]/15 backdrop-blur-md transition-all duration-300 ${
-        scrolled ? 'py-3 bg-[#10291d]/95 shadow-lg shadow-black/20' : 'py-3 sm:py-4 bg-[#10291d]/88'
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-[#c8ad70]/15 bg-transparent transition-all duration-300 ${
+        scrolled ? 'py-3 shadow-lg shadow-black/20' : 'py-3 sm:py-4'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
