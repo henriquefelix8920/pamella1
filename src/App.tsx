@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef, Suspense } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView, AnimatePresence } from 'framer-motion';
 import { PRODUCT } from './config';
-import { HeroScene, SectionScene } from './components/Scene3D';
+// Cenas 3D removidas para reduzir o custo de renderização e priorizar o vídeo.
 
 // ═══════════════════════════════════════════
 // ANIMATED BUTTON COMPONENT
@@ -10,7 +10,7 @@ import { HeroScene, SectionScene } from './components/Scene3D';
 function AnimatedButton({ children, href, variant = 'primary', className = '' }: {
   children: React.ReactNode;
   href: string;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'offer';
   className?: string;
 }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -27,13 +27,12 @@ function AnimatedButton({ children, href, variant = 'primary', className = '' }:
     }
   };
 
-  const baseClasses = variant === 'primary'
-    ? 'relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-xl overflow-hidden transition-all duration-500 group'
-    : 'relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-xl overflow-hidden transition-all duration-500 border group';
-
-  const variantClasses = variant === 'primary'
-    ? 'bg-gradient-to-r from-[#6c63ff] to-[#8b83ff] hover:shadow-[0_0_40px_rgba(108,99,255,0.4)] hover:scale-[1.02]'
-    : 'border-[#d4a853]/30 text-[#d4a853] hover:border-[#d4a853]/60 hover:shadow-[0_0_30px_rgba(212,168,83,0.2)] hover:scale-[1.02]';
+  const baseClasses = 'relative inline-flex items-center justify-center gap-2 px-7 py-4 text-base font-semibold rounded-full overflow-hidden transition-all duration-500 group';
+  const variantClasses = variant === 'offer'
+    ? 'offer-cta text-[#10291d] border border-[#e7d7a6]/80'
+    : variant === 'secondary'
+    ? 'editorial-cta text-[#f4f0e5] border border-[#d9cda9]/35'
+    : 'editorial-cta text-[#f4f0e5] border border-white/20';
 
   return (
     <a
@@ -56,7 +55,7 @@ function AnimatedButton({ children, href, variant = 'primary', className = '' }:
           style={{
             left: mousePos.x - 64,
             top: mousePos.y - 64,
-            background: variant === 'primary' ? 'rgba(108,99,255,0.6)' : 'rgba(212,168,83,0.6)'
+            background: variant === 'offer' ? 'rgba(232,211,151,0.35)' : 'rgba(212,205,169,0.18)'
           }}
         />
       )}
@@ -64,7 +63,7 @@ function AnimatedButton({ children, href, variant = 'primary', className = '' }:
       {/* Border glow animation */}
       <span className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         style={{
-          background: 'linear-gradient(135deg, rgba(108,99,255,0.3), transparent, rgba(212,168,83,0.3))',
+          background: 'linear-gradient(135deg, rgba(232,211,151,0.3), transparent, rgba(82,116,91,0.25))',
           padding: '1px',
           mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
           maskComposite: 'exclude',
@@ -253,54 +252,24 @@ function HeroSection() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="hero-video absolute inset-0 w-full h-full object-cover opacity-75"
           src={PRODUCT.heroVideo}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f]/80 via-[#0a0a0f]/60 to-[#0a0a0f]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0f]/50 via-transparent to-[#0a0a0f]/50" />
+        <div className="absolute inset-0 hero-video-fade" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#10291d]/35 via-transparent to-[#10291d]/20" />
       </div>
 
-      {/* Animated grid lines */}
-      <div className="absolute inset-0 z-[1] pointer-events-none opacity-[0.03]">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(rgba(108,99,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(108,99,255,0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
-          animation: 'gradient-shift 20s linear infinite',
-        }} />
-      </div>
+      {/* Linhas editoriais discretas */}
+      <div className="hero-linework" aria-hidden="true"><span /><span /><span /></div>
 
-      {/* 3D Scene */}
-      <Suspense fallback={null}>
-        <HeroScene />
-      </Suspense>
-
-      {/* Animated orbs */}
-      <div className="absolute inset-0 z-[2] pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#6c63ff]/10 blur-[100px]"
-          style={{ animation: 'morph 8s ease-in-out infinite' }} />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[#d4a853]/8 blur-[120px]"
-          style={{ animation: 'morph 10s ease-in-out infinite reverse' }} />
-      </div>
+      {/* Fumaça abstrata CSS, sem canvas nem filtros pesados */}
+      <div className="hero-smoke" aria-hidden="true"><span /><span /></div>
 
       {/* Content */}
       <motion.div
         className="relative z-10 max-w-[900px] mx-auto px-4 sm:px-6 text-center"
         style={{ y, opacity, scale }}
       >
-        {/* Logo */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <img
-            src={PRODUCT.logo}
-            alt="Logo"
-            className="w-20 h-20 mx-auto rounded-full object-cover border-2 border-[#d4a853]/30 shadow-[0_0_30px_rgba(212,168,83,0.2)]"
-          />
-        </motion.div>
-
         {/* Badge */}
         <motion.div
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-surface mb-8"
@@ -341,7 +310,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
         >
-          <AnimatedButton href={PRODUCT.checkoutUrl} variant="primary">
+          <AnimatedButton href="#materiais" variant="secondary">
             Conhecer o material
           </AnimatedButton>
           <a
@@ -382,12 +351,12 @@ function HeroSection() {
         >
           <div className="relative mx-auto w-[280px] h-[360px] sm:w-[320px] sm:h-[420px]" style={{ animation: 'float 6s ease-in-out infinite' }}>
             {/* Glow behind mockup */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6c63ff]/20 to-[#d4a853]/20 rounded-3xl blur-3xl scale-110" />
+            <div className="absolute inset-0 rounded-3xl border border-[#d4a853]/15 scale-[1.03]" />
             
             {/* Mockup card */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
               style={{
-                background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+                background: 'linear-gradient(145deg, #234735 0%, #173d2b 62%, #10291d 100%)',
                 transform: 'translateZ(40px)',
               }}>
               {/* Inner content */}
@@ -452,9 +421,7 @@ function IdentificationSection() {
 
   return (
     <AnimatedSection id="identificacao" bgVariant="accent">
-      <Suspense fallback={null}>
-        <SectionScene color1="#6c63ff" color2="#8b83ff" />
-      </Suspense>
+      
       
       {/* Animated morphing shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -535,9 +502,7 @@ function SolutionSection() {
 
   return (
     <AnimatedSection id="conteudo" bgVariant="gold">
-      <Suspense fallback={null}>
-        <SectionScene color1="#d4a853" color2="#6c63ff" />
-      </Suspense>
+      
       
       {/* Animated background lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -587,22 +552,24 @@ function SolutionSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="learning-list max-w-[920px] mx-auto">
           {topics.map((topic, i) => (
-            <Card3D key={i} delay={i}>
-              <div className="p-6 h-full glass-surface rounded-2xl hover:bg-white/[0.04] transition-all duration-300 group relative overflow-hidden">
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#d4a853]/0 to-[#6c63ff]/0 group-hover:from-[#d4a853]/5 group-hover:to-[#6c63ff]/5 transition-all duration-500 rounded-2xl" />
-                
-                <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d4a853]/10 to-[#6c63ff]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-2xl">{topic.icon}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-[#f8f8fc] mb-2">{topic.title}</h3>
-                  <p className="text-[#b8b8c8] text-sm leading-relaxed">{topic.desc}</p>
-                </div>
+            <motion.article
+              key={topic.title}
+              className="learning-row"
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.45, delay: i * 0.04 }}
+            >
+              <div className="learning-index" aria-hidden="true">{String(i + 1).padStart(2, '0')}</div>
+              <div className="learning-icon" aria-hidden="true"><span>{topic.icon}</span></div>
+              <div className="learning-copy">
+                <h3>{topic.title}</h3>
+                <p>{topic.desc}</p>
               </div>
-            </Card3D>
+              <div className="learning-rule" aria-hidden="true">↗</div>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -624,9 +591,7 @@ function IncludedSection() {
 
   return (
     <AnimatedSection id="materiais" bgVariant="dark">
-      <Suspense fallback={null}>
-        <SectionScene color1="#6c63ff" color2="#d4a853" />
-      </Suspense>
+      
       
       {/* Animated background dots */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -711,9 +676,7 @@ function IncludedSection() {
 function AuthorSection() {
   return (
     <AnimatedSection id="autora" bgVariant="accent">
-      <Suspense fallback={null}>
-        <SectionScene color1="#d4a853" color2="#6c63ff" />
-      </Suspense>
+      
       
       {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -808,9 +771,7 @@ function AuthorSection() {
 function OfferSection() {
   return (
     <AnimatedSection id="oferta" bgVariant="gold">
-      <Suspense fallback={null}>
-        <SectionScene color1="#d4a853" color2="#6c63ff" />
-      </Suspense>
+      
       
       {/* Animated rings */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
@@ -905,7 +866,7 @@ function OfferSection() {
             </div>
 
             {/* CTA */}
-            <AnimatedButton href={PRODUCT.checkoutUrl} variant="primary" className="w-full">
+            <AnimatedButton href={PRODUCT.checkoutUrl} variant="offer" className="w-full">
               Acessar a oferta
             </AnimatedButton>
 
@@ -930,9 +891,7 @@ function FAQSection() {
 
   return (
     <AnimatedSection id="faq" bgVariant="dark">
-      <Suspense fallback={null}>
-        <SectionScene color1="#6c63ff" color2="#8b83ff" />
-      </Suspense>
+      
       
       {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -1120,7 +1079,7 @@ function FinalCTASection() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <AnimatedButton href={PRODUCT.checkoutUrl} variant="primary">
+            <AnimatedButton href="#materiais" variant="secondary">
               Conhecer o material
             </AnimatedButton>
           </motion.div>
