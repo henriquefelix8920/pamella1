@@ -102,10 +102,10 @@ function AnimatedSection({ children, className = '', id = '', bgVariant = 'defau
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const bgClasses = {
-    default: 'bg-[#0a0a0f]',
-    accent: 'bg-gradient-to-b from-[#0a0a0f] via-[#0d0d1a] to-[#0a0a0f]',
-    gold: 'bg-gradient-to-b from-[#0a0a0f] via-[#12100a] to-[#0a0a0f]',
-    dark: 'bg-gradient-to-b from-[#0a0a0f] via-[#08080d] to-[#0a0a0f]',
+    default: 'bg-[#10291d]',
+    accent: 'bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]',
+    gold: 'bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]',
+    dark: 'bg-gradient-to-b from-[#10291d] via-[#10291d] to-[#10291d]',
   };
 
   return (
@@ -278,7 +278,7 @@ function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <span className="w-2 h-2 rounded-full bg-[#4ade80] animate-pulse" />
-          <span className="text-sm text-[#b8b8c8]">Material de Educação Financeira para Educadores</span>
+          <span className="text-sm text-[#d8d2c1]">Material de Educação Financeira para Educadores</span>
         </motion.div>
 
         {/* Title */}
@@ -289,13 +289,13 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          <span className="block text-[#f8f8fc]">Invista no seu</span>
+          <span className="block text-[#f5f1e7]">Invista no seu</span>
           <span className="block text-gradient-gold">futuro financeiro</span>
         </motion.h1>
 
         {/* Subtitle */}
         <motion.p
-          className="text-lg sm:text-xl text-[#b8b8c8] max-w-[600px] mx-auto mb-10 leading-relaxed"
+          className="text-lg sm:text-xl text-[#d8d2c1] max-w-[600px] mx-auto mb-10 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
@@ -315,7 +315,7 @@ function HeroSection() {
           </AnimatedButton>
           <a
             href="#conteudo"
-            className="inline-flex items-center gap-2 px-6 py-4 text-[#b8b8c8] hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-6 py-4 text-[#d8d2c1] hover:text-white transition-colors duration-300"
           >
             <span>Saiba mais</span>
             <motion.svg
@@ -333,7 +333,7 @@ function HeroSection() {
 
         {/* Price hint */}
         <motion.p
-          className="mt-8 text-sm text-[#7a7a8e]"
+          className="mt-8 text-sm text-[#b5b29f]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -351,7 +351,7 @@ function HeroSection() {
         >
           <div className="relative mx-auto w-[280px] h-[360px] sm:w-[320px] sm:h-[420px]" style={{ animation: 'float 6s ease-in-out infinite' }}>
             {/* Glow behind mockup */}
-            <div className="absolute inset-0 rounded-3xl border border-[#d4a853]/15 scale-[1.03]" />
+            <div className="absolute inset-0 rounded-3xl border border-[#c8ad70]/15 scale-[1.03]" />
             
             {/* Mockup card */}
             <div className="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
@@ -361,24 +361,24 @@ function HeroSection() {
               }}>
               {/* Inner content */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#d4a853] to-[#e8c47a] mb-6 flex items-center justify-center shadow-[0_0_30px_rgba(212,168,83,0.3)]">
-                  <svg className="w-8 h-8 text-[#0a0a0f]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#c8ad70] to-[#e8d7a6] mb-6 flex items-center justify-center shadow-[0_0_30px_rgba(212,168,83,0.3)]">
+                  <svg className="w-8 h-8 text-[#10291d]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-display)' }}>
                   Investimento Inicial
                 </h3>
-                <p className="text-[#d4a853] text-sm font-medium mb-4">para Educadores</p>
-                <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#d4a853]/50 to-transparent mb-4" />
-                <p className="text-xs text-[#b8b8c8] leading-relaxed">
+                <p className="text-[#c8ad70] text-sm font-medium mb-4">para Educadores</p>
+                <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#c8ad70]/50 to-transparent mb-4" />
+                <p className="text-xs text-[#d8d2c1] leading-relaxed">
                   Guia prático de educação financeira
                 </p>
               </div>
               
               {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-20 h-20 border border-[#d4a853]/10 rounded-full" />
-              <div className="absolute bottom-4 left-4 w-12 h-12 border border-[#6c63ff]/10 rounded-lg rotate-45" />
+              <div className="absolute top-4 right-4 w-20 h-20 border border-[#c8ad70]/10 rounded-full" />
+              <div className="absolute bottom-4 left-4 w-12 h-12 border border-[#52745b]/10 rounded-lg rotate-45" />
               
               {/* Shine effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent" 
@@ -394,9 +394,9 @@ function HeroSection() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 rounded-full border-2 border-[#b8b8c8]/30 flex items-start justify-center p-1">
+        <div className="w-6 h-10 rounded-full border-2 border-[#d8d2c1]/30 flex items-start justify-center p-1">
           <motion.div
-            className="w-1.5 h-3 rounded-full bg-[#6c63ff]"
+            className="w-1.5 h-3 rounded-full bg-[#52745b]"
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
@@ -425,9 +425,9 @@ function IdentificationSection() {
       
       {/* Animated morphing shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-[#6c63ff]/[0.03] blur-3xl"
+        <div className="absolute -top-20 -right-20 w-[400px] h-[400px] rounded-full bg-[#52745b]/[0.03] blur-3xl"
           style={{ animation: 'morph 12s ease-in-out infinite' }} />
-        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-[#d4a853]/[0.03] blur-3xl"
+        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] rounded-full bg-[#c8ad70]/[0.03] blur-3xl"
           style={{ animation: 'morph 15s ease-in-out infinite reverse' }} />
       </div>
       
@@ -446,7 +446,7 @@ function IdentificationSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#6c63ff] border border-[#6c63ff]/20 bg-[#6c63ff]/5">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#52745b] border border-[#52745b]/20 bg-[#52745b]/5">
               Identificação
             </span>
           </motion.div>
@@ -456,7 +456,7 @@ function IdentificationSection() {
           >
             Este material pode ser <span className="text-gradient-accent">para você</span> se...
           </h2>
-          <p className="text-[#b8b8c8] text-lg max-w-[600px] mx-auto">
+          <p className="text-[#d8d2c1] text-lg max-w-[600px] mx-auto">
             Você não precisa ser especialista em investimentos para começar a cuidar melhor do seu dinheiro.
           </p>
         </motion.div>
@@ -472,8 +472,8 @@ function IdentificationSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ x: 8, transition: { duration: 0.2 } }}
             >
-              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#6c63ff]/20 to-[#6c63ff]/5 flex items-center justify-center group-hover:from-[#6c63ff]/30 group-hover:to-[#6c63ff]/10 transition-all duration-300">
-                <svg className="w-4 h-4 text-[#6c63ff]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[#52745b]/20 to-[#52745b]/5 flex items-center justify-center group-hover:from-[#52745b]/30 group-hover:to-[#52745b]/10 transition-all duration-300">
+                <svg className="w-4 h-4 text-[#52745b]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -509,7 +509,7 @@ function SolutionSection() {
         {Array.from({ length: 5 }).map((_, i) => (
           <div
             key={i}
-            className="absolute h-[1px] bg-gradient-to-r from-transparent via-[#d4a853]/10 to-transparent"
+            className="absolute h-[1px] bg-gradient-to-r from-transparent via-[#c8ad70]/10 to-transparent"
             style={{
               top: `${20 + i * 15}%`,
               left: '-10%',
@@ -537,7 +537,7 @@ function SolutionSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#d4a853] border border-[#d4a853]/20 bg-[#d4a853]/5">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#c8ad70] border border-[#c8ad70]/20 bg-[#c8ad70]/5">
               Conteúdo
             </span>
           </motion.div>
@@ -547,7 +547,7 @@ function SolutionSection() {
           >
             O que você vai <span className="text-gradient-gold">aprender</span>
           </h2>
-          <p className="text-[#b8b8c8] text-lg max-w-[600px] mx-auto">
+          <p className="text-[#d8d2c1] text-lg max-w-[600px] mx-auto">
             Um caminho prático para educadores que querem compreender finanças pessoais e investimentos de forma gradual.
           </p>
         </motion.div>
@@ -598,7 +598,7 @@ function IncludedSection() {
         {Array.from({ length: 15 }).map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 rounded-full bg-[#6c63ff]/10"
+            className="absolute w-2 h-2 rounded-full bg-[#52745b]/10"
             style={{
               left: `${10 + Math.random() * 80}%`,
               top: `${10 + Math.random() * 80}%`,
@@ -624,7 +624,7 @@ function IncludedSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#6c63ff] border border-[#6c63ff]/20 bg-[#6c63ff]/5">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#52745b] border border-[#52745b]/20 bg-[#52745b]/5">
               Materiais
             </span>
           </motion.div>
@@ -634,7 +634,7 @@ function IncludedSection() {
           >
             O que está <span className="text-gradient-accent">incluído</span>
           </h2>
-          <p className="text-[#b8b8c8] text-lg max-w-[600px] mx-auto">
+          <p className="text-[#d8d2c1] text-lg max-w-[600px] mx-auto">
             Todo o material que você recebe ao adquirir o produto.
           </p>
         </motion.div>
@@ -653,12 +653,12 @@ function IncludedSection() {
                     WebkitMaskComposite: 'xor',
                   }} />
                 
-                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#6c63ff]/20 to-[#d4a853]/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
+                <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#52745b]/20 to-[#c8ad70]/10 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
                   {iconMap[material.icon] || '📄'}
                 </div>
                 <div className="relative z-10">
-                  <h3 className="text-lg font-semibold text-[#f8f8fc] mb-1 group-hover:text-gradient-gold transition-all duration-300">{material.title}</h3>
-                  <p className="text-[#b8b8c8] text-sm leading-relaxed">{material.description}</p>
+                  <h3 className="text-lg font-semibold text-[#f5f1e7] mb-1 group-hover:text-gradient-gold transition-all duration-300">{material.title}</h3>
+                  <p className="text-[#d8d2c1] text-sm leading-relaxed">{material.description}</p>
                 </div>
               </div>
             </Card3D>
@@ -680,9 +680,9 @@ function AuthorSection() {
       
       {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#d4a853]/[0.03] rounded-full blur-3xl"
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#c8ad70]/[0.03] rounded-full blur-3xl"
           style={{ animation: 'morph 10s ease-in-out infinite' }} />
-        <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-[#6c63ff]/[0.03] rounded-full blur-3xl"
+        <div className="absolute bottom-0 left-0 w-[250px] h-[250px] bg-[#52745b]/[0.03] rounded-full blur-3xl"
           style={{ animation: 'morph 12s ease-in-out infinite reverse' }} />
       </div>
       
@@ -702,7 +702,7 @@ function AuthorSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#d4a853] border border-[#d4a853]/20 bg-[#d4a853]/5">
+              <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#c8ad70] border border-[#c8ad70]/20 bg-[#c8ad70]/5">
                 Autora
               </span>
             </motion.div>
@@ -717,7 +717,7 @@ function AuthorSection() {
           <Card3D>
             <div className="flex flex-col md:flex-row items-center gap-8 p-8 glass-surface rounded-2xl relative overflow-hidden">
               {/* Decorative background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#d4a853]/[0.02] to-[#6c63ff]/[0.02]" />
+              <div className="absolute inset-0 bg-gradient-to-br from-[#c8ad70]/[0.02] to-[#52745b]/[0.02]" />
               
               <motion.div
                 className="flex-shrink-0 relative z-10"
@@ -728,15 +728,15 @@ function AuthorSection() {
               >
                 <div className="relative">
                   {/* Animated ring */}
-                  <div className="absolute -inset-3 rounded-2xl border border-[#d4a853]/20"
+                  <div className="absolute -inset-3 rounded-2xl border border-[#c8ad70]/20"
                     style={{ animation: 'rotate-slow 20s linear infinite' }} />
                   
                   <img
                     src={PRODUCT.author.photo}
                     alt={`Foto de ${PRODUCT.author.name}`}
-                    className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover border-2 border-[#d4a853]/20 relative z-10"
+                    className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover border-2 border-[#c8ad70]/20 relative z-10"
                   />
-                  <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-[#6c63ff]/20 to-[#d4a853]/20 blur-md -z-10"
+                  <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-[#52745b]/20 to-[#c8ad70]/20 blur-md -z-10"
                     style={{ animation: 'glow-pulse 4s ease-in-out infinite' }} />
                 </div>
               </motion.div>
@@ -748,9 +748,9 @@ function AuthorSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                <h3 className="text-2xl font-bold text-[#f8f8fc] mb-2">{PRODUCT.author.name}</h3>
-                <p className="text-[#d4a853] font-medium mb-4">{PRODUCT.author.role}</p>
-                <p className="text-[#b8b8c8] leading-relaxed">
+                <h3 className="text-2xl font-bold text-[#f5f1e7] mb-2">{PRODUCT.author.name}</h3>
+                <p className="text-[#c8ad70] font-medium mb-4">{PRODUCT.author.role}</p>
+                <p className="text-[#d8d2c1] leading-relaxed">
                   Educadora que criou este material a partir da própria experiência em organizar as finanças pessoais 
                   e aprender sobre investimentos. O conteúdo reflete uma trajetória real de quem começou do zero 
                   e busca compartilhar o caminho com outros educadores.
@@ -775,11 +775,11 @@ function OfferSection() {
       
       {/* Animated rings */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-        <div className="w-[600px] h-[600px] rounded-full border border-[#d4a853]/[0.05]"
+        <div className="w-[600px] h-[600px] rounded-full border border-[#c8ad70]/[0.05]"
           style={{ animation: 'rotate-slow 30s linear infinite' }} />
-        <div className="absolute w-[400px] h-[400px] rounded-full border border-[#6c63ff]/[0.05]"
+        <div className="absolute w-[400px] h-[400px] rounded-full border border-[#52745b]/[0.05]"
           style={{ animation: 'rotate-slow 20s linear infinite reverse' }} />
-        <div className="absolute w-[200px] h-[200px] rounded-full border border-[#d4a853]/[0.08]"
+        <div className="absolute w-[200px] h-[200px] rounded-full border border-[#c8ad70]/[0.08]"
           style={{ animation: 'rotate-slow 15s linear infinite' }} />
       </div>
       
@@ -798,7 +798,7 @@ function OfferSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#d4a853] border border-[#d4a853]/20 bg-[#d4a853]/5">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#c8ad70] border border-[#c8ad70]/20 bg-[#c8ad70]/5">
               Oferta
             </span>
           </motion.div>
@@ -813,15 +813,15 @@ function OfferSection() {
         <Card3D className="max-w-[600px] mx-auto">
           <div className="p-8 md:p-10 glass-surface rounded-2xl text-center relative overflow-hidden">
             {/* Decorative gradient top */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#6c63ff] via-[#d4a853] to-[#6c63ff]"
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#52745b] via-[#c8ad70] to-[#52745b]"
               style={{ backgroundSize: '200% 100%', animation: 'shimmer 3s linear infinite' }} />
             
             {/* Corner decorations */}
-            <div className="absolute top-4 right-4 w-16 h-16 border border-[#d4a853]/10 rounded-full" />
-            <div className="absolute bottom-4 left-4 w-10 h-10 border border-[#6c63ff]/10 rounded-lg rotate-45" />
+            <div className="absolute top-4 right-4 w-16 h-16 border border-[#c8ad70]/10 rounded-full" />
+            <div className="absolute bottom-4 left-4 w-10 h-10 border border-[#52745b]/10 rounded-lg rotate-45" />
             
-            <h3 className="text-xl font-bold text-[#f8f8fc] mb-2">{PRODUCT.name}</h3>
-            <p className="text-[#7a7a8e] text-sm mb-8">Tudo que você recebe ao adquirir o material</p>
+            <h3 className="text-xl font-bold text-[#f5f1e7] mb-2">{PRODUCT.name}</h3>
+            <p className="text-[#b5b29f] text-sm mb-8">Tudo que você recebe ao adquirir o material</p>
             
             {/* Included items */}
             <div className="text-left mb-8 space-y-3">
@@ -849,7 +849,7 @@ function OfferSection() {
 
             {/* Price */}
             <div className="mb-8">
-              <p className="text-[#7a7a8e] text-sm mb-2">Investimento</p>
+              <p className="text-[#b5b29f] text-sm mb-2">Investimento</p>
               <motion.div
                 className="text-4xl md:text-5xl font-bold text-gradient-gold mb-2"
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -859,10 +859,10 @@ function OfferSection() {
               >
                 {PRODUCT.price.amount}
               </motion.div>
-              <p className="text-[#b8b8c8] text-sm">
+              <p className="text-[#d8d2c1] text-sm">
                 ou {PRODUCT.price.installments}
               </p>
-              <p className="text-[#7a7a8e] text-xs mt-2">{PRODUCT.price.note}</p>
+              <p className="text-[#b5b29f] text-xs mt-2">{PRODUCT.price.note}</p>
             </div>
 
             {/* CTA */}
@@ -871,7 +871,7 @@ function OfferSection() {
             </AnimatedButton>
 
             {/* Trust note */}
-            <p className="mt-6 text-xs text-[#7a7a8e] leading-relaxed">
+            <p className="mt-6 text-xs text-[#b5b29f] leading-relaxed">
               Pagamento processado pela Hotmart. Conteúdo de caráter educativo. 
               Este material não substitui aconselhamento financeiro profissional individual.
             </p>
@@ -895,9 +895,9 @@ function FAQSection() {
       
       {/* Animated background */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-[#6c63ff]/[0.02] rounded-full blur-3xl"
+        <div className="absolute top-1/4 left-0 w-[300px] h-[300px] bg-[#52745b]/[0.02] rounded-full blur-3xl"
           style={{ animation: 'morph 10s ease-in-out infinite' }} />
-        <div className="absolute bottom-1/4 right-0 w-[250px] h-[250px] bg-[#d4a853]/[0.02] rounded-full blur-3xl"
+        <div className="absolute bottom-1/4 right-0 w-[250px] h-[250px] bg-[#c8ad70]/[0.02] rounded-full blur-3xl"
           style={{ animation: 'morph 12s ease-in-out infinite reverse' }} />
       </div>
       
@@ -916,7 +916,7 @@ function FAQSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#6c63ff] border border-[#6c63ff]/20 bg-[#6c63ff]/5">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#52745b] border border-[#52745b]/20 bg-[#52745b]/5">
               Dúvidas
             </span>
           </motion.div>
@@ -933,7 +933,7 @@ function FAQSection() {
             <motion.div
               key={i}
               className={`glass-surface rounded-xl overflow-hidden transition-all duration-300 ${
-                openIndex === i ? 'ring-1 ring-[#6c63ff]/20' : ''
+                openIndex === i ? 'ring-1 ring-[#52745b]/20' : ''
               }`}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -947,14 +947,14 @@ function FAQSection() {
                 aria-expanded={openIndex === i}
                 aria-controls={`faq-answer-${i}`}
               >
-                <span className="text-[#f8f8fc] font-medium pr-4 group-hover:text-[#e8e8f0] transition-colors">{item.question}</span>
+                <span className="text-[#f5f1e7] font-medium pr-4 group-hover:text-[#e8e8f0] transition-colors">{item.question}</span>
                 <motion.div
-                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#6c63ff]/10 flex items-center justify-center"
+                  className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#52745b]/10 flex items-center justify-center"
                   animate={{ rotate: openIndex === i ? 180 : 0, scale: openIndex === i ? 1.1 : 1 }}
                   transition={{ duration: 0.3 }}
                 >
                   <svg
-                    className="w-4 h-4 text-[#6c63ff]"
+                    className="w-4 h-4 text-[#52745b]"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -973,7 +973,7 @@ function FAQSection() {
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="px-5 pb-5 text-[#b8b8c8] text-sm leading-relaxed border-t border-white/5 pt-4">
+                    <div className="px-5 pb-5 text-[#d8d2c1] text-sm leading-relaxed border-t border-white/5 pt-4">
                       {item.answer}
                     </div>
                   </motion.div>
@@ -996,7 +996,7 @@ function FinalCTASection() {
     <section className="relative py-24 md:py-32 overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0f] via-[#0d0d1a] to-[#0a0a0f]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#10291d] via-[#173d2b] to-[#10291d]" />
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -1019,11 +1019,11 @@ function FinalCTASection() {
       {/* Animated geometric shapes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px]">
-          <div className="absolute inset-0 border border-[#6c63ff]/[0.06] rounded-full"
+          <div className="absolute inset-0 border border-[#52745b]/[0.06] rounded-full"
             style={{ animation: 'rotate-slow 25s linear infinite' }} />
-          <div className="absolute inset-8 border border-[#d4a853]/[0.06] rounded-full"
+          <div className="absolute inset-8 border border-[#c8ad70]/[0.06] rounded-full"
             style={{ animation: 'rotate-slow 20s linear infinite reverse' }} />
-          <div className="absolute inset-16 border border-[#6c63ff]/[0.08] rounded-full"
+          <div className="absolute inset-16 border border-[#52745b]/[0.08] rounded-full"
             style={{ animation: 'rotate-slow 15s linear infinite' }} />
         </div>
       </div>
@@ -1060,7 +1060,7 @@ function FinalCTASection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#d4a853] border border-[#d4a853]/20 bg-[#d4a853]/5">
+            <span className="px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase text-[#c8ad70] border border-[#c8ad70]/20 bg-[#c8ad70]/5">
               Próximo passo
             </span>
           </motion.div>
@@ -1071,7 +1071,7 @@ function FinalCTASection() {
           >
             Dê o <span className="text-gradient-gold">primeiro passo</span>
           </h2>
-          <p className="text-[#b8b8c8] text-lg mb-10 max-w-[500px] mx-auto leading-relaxed">
+          <p className="text-[#d8d2c1] text-lg mb-10 max-w-[500px] mx-auto leading-relaxed">
             Educação financeira é um caminho. Este material pode ser o início — prático, acessível e pensado para quem está começando.
           </p>
           
@@ -1084,7 +1084,7 @@ function FinalCTASection() {
             </AnimatedButton>
           </motion.div>
           
-          <p className="mt-8 text-xs text-[#7a7a8e]">
+          <p className="mt-8 text-xs text-[#b5b29f]">
             Acesso imediato após confirmação do pagamento via Hotmart
           </p>
         </motion.div>
@@ -1102,7 +1102,7 @@ function Footer() {
     <footer className="relative py-12 border-t border-white/5 overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[#6c63ff]/[0.02] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[#52745b]/[0.02] rounded-full blur-3xl" />
       </div>
       
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -1113,10 +1113,10 @@ function Footer() {
               alt="Logo"
               className="w-8 h-8 rounded-full object-cover"
             />
-            <span className="text-sm text-[#7a7a8e]">{PRODUCT.name}</span>
+            <span className="text-sm text-[#b5b29f]">{PRODUCT.name}</span>
           </div>
           <div className="text-center md:text-right">
-            <p className="text-xs text-[#7a7a8e] leading-relaxed max-w-[400px]">
+            <p className="text-xs text-[#b5b29f] leading-relaxed max-w-[400px]">
               Conteúdo de caráter educativo. Não constitui aconselhamento financeiro personalizado. 
               Resultados individuais podem variar. Consulte um profissional para orientações específicas.
             </p>
@@ -1126,10 +1126,10 @@ function Footer() {
         {/* Bottom divider with gradient */}
         <div className="mt-8 pt-6 border-t border-white/5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-[#7a7a8e]">
+            <p className="text-xs text-[#b5b29f]">
               © {new Date().getFullYear()} {PRODUCT.author.name}. Todos os direitos reservados.
             </p>
-            <p className="text-xs text-[#7a7a8e]">
+            <p className="text-xs text-[#b5b29f]">
               Pagamento seguro via Hotmart
             </p>
           </div>
@@ -1163,7 +1163,7 @@ function NavBar() {
     >
       {/* Animated border bottom when scrolled */}
       {scrolled && (
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#6c63ff]/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#52745b]/20 to-transparent" />
       )}
       
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -1175,10 +1175,10 @@ function NavBar() {
           <div className="relative">
             <img src={PRODUCT.logo} alt="Logo" className="w-8 h-8 rounded-full object-cover" />
             {scrolled && (
-              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[#d4a853]/30 to-[#6c63ff]/30 blur-sm -z-10" />
+              <div className="absolute -inset-0.5 rounded-full bg-gradient-to-br from-[#c8ad70]/30 to-[#52745b]/30 blur-sm -z-10" />
             )}
           </div>
-          <span className="text-sm font-medium text-[#f8f8fc] hidden sm:block">
+          <span className="text-sm font-medium text-[#f5f1e7] hidden sm:block">
             {PRODUCT.name}
           </span>
         </motion.div>
@@ -1196,7 +1196,7 @@ function NavBar() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-[#f8f8fc] overflow-x-hidden">
+    <div className="min-h-screen bg-[#10291d] text-[#f5f1e7] overflow-x-hidden">
       {/* Cinematic overlays */}
       <div className="cinematic-vignette" />
       <div className="film-grain" />
