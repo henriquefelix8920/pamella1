@@ -5,31 +5,25 @@
    ═══════════════════════════════════════════ */
 
 :root {
-  /* Paleta principal - Educação financeira, confiança, acolhimento */
-  --color-bg-primary: #0a0a0f;
-  --color-bg-secondary: #111118;
-  --color-bg-surface: #1a1a24;
-  --color-bg-elevated: #22222e;
-  
-  --color-text-primary: #f8f8fc;
-  --color-text-secondary: #b8b8c8;
-  --color-text-muted: #7a7a8e;
-  
-  --color-accent: #6c63ff;
-  --color-accent-light: #8b83ff;
-  --color-accent-glow: rgba(108, 99, 255, 0.3);
-  
-  --color-gold: #d4a853;
-  --color-gold-light: #e8c47a;
-  --color-gold-glow: rgba(212, 168, 83, 0.2);
-  
-  --color-success: #4ade80;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.15);
-  
-  /* Tipografia */
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'Inter', sans-serif;
+  /* Paleta editorial inspirada no dólar americano */
+  --color-bg-primary: #10291d;
+  --color-bg-secondary: #173d2b;
+  --color-bg-surface: #1e4432;
+  --color-bg-elevated: #28513c;
+  --color-text-primary: #f5f1e7;
+  --color-text-secondary: #d8d2c1;
+  --color-text-muted: #b5b29f;
+  --color-accent: #52745b;
+  --color-accent-light: #9ab59a;
+  --color-accent-glow: rgba(82, 116, 91, 0.18);
+  --color-gold: #c8ad70;
+  --color-gold-light: #e8d7a6;
+  --color-gold-glow: rgba(200, 173, 112, 0.16);
+  --color-success: #a5c7a2;
+  --color-border: rgba(232, 215, 166, 0.16);
+  --color-border-hover: rgba(232, 215, 166, 0.32);
+  --font-display: 'Times New Roman', Times, serif;
+  --font-body: 'Times New Roman', Times, serif;
   
   /* Espaçamento */
   --space-xs: 4px;
@@ -372,4 +366,41 @@ body {
   .card-3d:hover {
     transform: rotateY(-2deg) rotateX(2deg) translateZ(10px);
   }
+}
+
+
+/* Refinamento editorial e performance */
+html, body { background: #10291d; }
+body { font-family: 'Times New Roman', Times, serif; color: #f5f1e7; }
+h1, h2, h3, h4, p, a, button { font-family: 'Times New Roman', Times, serif; }
+.text-gradient-gold, .text-gradient-accent { background: linear-gradient(110deg, #e8d7a6, #c8ad70 55%, #f5f1e7); -webkit-background-clip: text; background-clip: text; }
+.glass-surface { background: rgba(245,241,231,.035); backdrop-filter: none; -webkit-backdrop-filter: none; border: 1px solid rgba(232,215,166,.15); }
+.glass-surface-hover:hover { background: rgba(245,241,231,.065); border-color: rgba(232,215,166,.32); }
+::-webkit-scrollbar-track { background: #10291d; } ::-webkit-scrollbar-thumb { background: #52745b; }
+.editorial-cta { background: rgba(245,241,231,.055); box-shadow: inset 0 1px rgba(255,255,255,.12), 0 5px 0 rgba(7,24,16,.35); transform: perspective(600px) translateY(0) rotateX(0); }
+.editorial-cta:hover { background: rgba(245,241,231,.12); transform: perspective(600px) translateY(-2px) rotateX(2deg); box-shadow: inset 0 1px rgba(255,255,255,.18), 0 8px 0 rgba(7,24,16,.22); }
+.offer-cta { background: linear-gradient(125deg, #e8d7a6 0%, #c8ad70 48%, #e5d39d 100%); background-size: 180% 180%; box-shadow: 0 5px 0 #8c7746, 0 12px 28px rgba(0,0,0,.18); animation: offer-drift 3.8s ease-in-out infinite; }
+.offer-cta:hover { background-position: 100% 50%; transform: translateY(-3px) scale(1.015); box-shadow: 0 8px 0 #8c7746, 0 18px 32px rgba(0,0,0,.24); }
+@keyframes offer-drift { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.hero-video { opacity: .78; }
+.hero-video-fade { background: linear-gradient(180deg, rgba(16,41,29,.28) 0%, rgba(16,41,29,.12) 42%, rgba(16,41,29,.88) 100%); }
+.hero-linework { position:absolute; inset:0; z-index:1; overflow:hidden; pointer-events:none; opacity:.45; }
+.hero-linework span { position:absolute; left:-10%; width:120%; height:1px; background:linear-gradient(90deg, transparent, rgba(232,215,166,.22), transparent); transform:rotate(-9deg); animation: line-drift 18s ease-in-out infinite alternate; }
+.hero-linework span:nth-child(1) { top:26%; } .hero-linework span:nth-child(2) { top:54%; animation-delay:-6s; } .hero-linework span:nth-child(3) { top:75%; animation-delay:-11s; }
+@keyframes line-drift { from { translate: -2% 0; opacity:.25; } to { translate: 2% 8px; opacity:.65; } }
+.hero-smoke { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1; opacity:.22; }
+.hero-smoke span { position:absolute; width:42vw; height:28vw; min-width:280px; min-height:190px; border-radius:50%; border:1px solid rgba(232,215,166,.11); background:radial-gradient(ellipse, rgba(82,116,91,.13), transparent 68%); animation: smoke-drift 22s ease-in-out infinite alternate; }
+.hero-smoke span:first-child { left:-12%; top:14%; } .hero-smoke span:last-child { right:-12%; bottom:8%; animation-delay:-10s; }
+@keyframes smoke-drift { from { transform:translate3d(-2%,0,0) scale(1); } to { transform:translate3d(3%,4%,0) scale(1.05); } }
+.learning-list { border-top:1px solid rgba(232,215,166,.25); }
+.learning-row { display:grid; grid-template-columns:64px 64px minmax(0,1fr) 28px; align-items:center; gap:20px; padding:24px 12px; border-bottom:1px solid rgba(232,215,166,.19); transition:background .25s ease, padding .25s ease; }
+.learning-row:hover { background:rgba(245,241,231,.035); padding-left:20px; padding-right:20px; }
+.learning-index { color:#c8ad70; font-size:14px; letter-spacing:.12em; text-align:center; }
+.learning-icon { width:54px; height:54px; display:flex; align-items:center; justify-content:center; justify-self:center; border:1px solid rgba(232,215,166,.28); border-radius:50%; color:#e8d7a6; background:rgba(245,241,231,.035); }
+.learning-icon span { font-size:22px; line-height:1; }
+.learning-copy h3 { color:#f5f1e7; font-size:clamp(19px,2vw,24px); font-weight:600; margin:0 0 5px; }
+.learning-copy p { color:#d8d2c1; font-size:16px; line-height:1.55; margin:0; }
+.learning-rule { color:#c8ad70; font-size:20px; text-align:center; transition:transform .25s ease; } .learning-row:hover .learning-rule { transform:translate(2px,-2px); }
+@media (max-width:600px) { .learning-row { grid-template-columns:32px 44px minmax(0,1fr); gap:12px; padding:20px 4px; } .learning-icon { width:42px; height:42px; } .learning-icon span { font-size:19px; } .learning-rule { display:none; } .learning-copy p { font-size:15px; } }
+@media (prefers-reduced-motion: reduce) { .hero-linework span, .hero-smoke span, .offer-cta { animation:none !important; }
 }
