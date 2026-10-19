@@ -14,7 +14,7 @@ export const PRODUCT = {
     note: "Valores sujeitos a alteração. Consulte o checkout oficial."
   },
   author: {
-    name: "Pâmela",
+    name: "Pamella Seixas",
     role: "Professora da rede pública de Minas Gerais",
     photo: "/foto1.jpg"
   },
