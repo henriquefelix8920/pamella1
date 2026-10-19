@@ -403,3 +403,4 @@ h1, h2, h3, h4, p, a, button { font-family: 'Times New Roman', Times, serif; }
 .learning-rule { color:#c8ad70; font-size:20px; text-align:center; transition:transform .25s ease; } .learning-row:hover .learning-rule { transform:translate(2px,-2px); }
 @media (max-width:600px) { .learning-row { grid-template-columns:32px 44px minmax(0,1fr); gap:12px; padding:20px 4px; } .learning-icon { width:42px; height:42px; } .learning-icon span { font-size:19px; } .learning-rule { display:none; } .learning-copy p { font-size:15px; } }
 @media (prefers-reduced-motion: reduce) { .hero-linework span, .hero-smoke span, .offer-cta { animation:none !important; }
+}
