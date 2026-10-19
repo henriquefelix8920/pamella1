@@ -423,3 +423,42 @@ section { background-image: radial-gradient(ellipse at 12% 8%, rgba(200,173,112,
 @media (prefers-reduced-motion: no-preference) {
   .offer-cta { animation: none !important; }
 }
+
+
+/* Cabeçalho fixo com espaço reservado: o título começa abaixo da navegação. */
+.hero-section { scroll-margin-top: 6rem; }
+@media (max-width: 640px) {
+  .hero-section { padding-top: 7.25rem; }
+}
+@media (min-width: 641px) {
+  .hero-section { padding-top: 8rem; }
+}
+
+/* Movimento sutil e uniforme para os ícones de toda a página. */
+.elegant-icon-motion {
+  transform-origin: 50% 50%;
+  animation: elegant-icon-breathe 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes elegant-icon-breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.035); }
+}
+
+/* A foto da autora ganha um movimento flutuante discreto. */
+.author-portrait-motion {
+  animation: author-portrait-float 5.5s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+@keyframes author-portrait-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(.5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elegant-icon-motion, .author-portrait-motion {
+    animation: none !important;
+    will-change: auto;
+  }
+}
