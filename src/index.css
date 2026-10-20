@@ -487,15 +487,15 @@ p, li { line-height: 1.7; }
 
 /* O vídeo aparece com clareza no hero; as demais seções continuam sobre base sólida. */
 .hero-video {
-  opacity: .48 !important;
-  filter: brightness(.72) saturate(.82);
+  opacity: .72 !important;
+  filter: brightness(.78) saturate(.9);
 }
 
 .hero-video-fade {
   background: linear-gradient(180deg,
-    rgba(9, 25, 18, .58) 0%,
-    rgba(9, 25, 18, .46) 42%,
-    rgba(9, 25, 18, .94) 100%) !important;
+    rgba(9, 25, 18, .38) 0%,
+    rgba(9, 25, 18, .22) 42%,
+    rgba(9, 25, 18, .85) 100%) !important;
 }
 
 .hero-section h1, .hero-section p {
