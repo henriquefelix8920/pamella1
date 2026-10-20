@@ -485,17 +485,21 @@ p, li { line-height: 1.7; }
 [class~="text-[#b5b29f]"] { color: #d8d5ca !important; }
 [class~="text-[#d8d2c1]"] { color: #e7e3d8 !important; }
 
-/* O fundo em movimento fica discreto; a leitura das demais seções é sobre base sólida. */
+/* O vídeo aparece com clareza no hero; as demais seções continuam sobre base sólida. */
 .hero-video {
-  opacity: .22 !important;
-  filter: brightness(.58) saturate(.72);
+  opacity: .48 !important;
+  filter: brightness(.72) saturate(.82);
 }
 
 .hero-video-fade {
   background: linear-gradient(180deg,
-    rgba(9, 25, 18, .76) 0%,
-    rgba(9, 25, 18, .70) 42%,
+    rgba(9, 25, 18, .58) 0%,
+    rgba(9, 25, 18, .46) 42%,
     rgba(9, 25, 18, .94) 100%) !important;
+}
+
+.hero-section h1, .hero-section p {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .58);
 }
 
 main > section:not(.hero-section) {
