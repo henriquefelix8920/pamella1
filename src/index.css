@@ -462,3 +462,57 @@ section { background-image: radial-gradient(ellipse at 12% 8%, rgba(200,173,112,
     will-change: auto;
   }
 }
+
+/* Legibilidade: o vídeo é atmosférico, nunca compete com o conteúdo. */
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p, li, button, a {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+p, li { line-height: 1.7; }
+
+/* Textos antes classificados como secundários agora mantêm contraste confortável. */
+[class~="text-[#b5b29f]"] { color: #d8d5ca !important; }
+[class~="text-[#d8d2c1]"] { color: #e7e3d8 !important; }
+
+/* O fundo em movimento fica discreto; a leitura das demais seções é sobre base sólida. */
+.hero-video {
+  opacity: .22 !important;
+  filter: brightness(.58) saturate(.72);
+}
+
+.hero-video-fade {
+  background: linear-gradient(180deg,
+    rgba(9, 25, 18, .76) 0%,
+    rgba(9, 25, 18, .70) 42%,
+    rgba(9, 25, 18, .94) 100%) !important;
+}
+
+main > section:not(.hero-section) {
+  background-color: #10291d;
+  background-image: linear-gradient(rgba(16, 41, 29, .97), rgba(16, 41, 29, .97)),
+    radial-gradient(ellipse at 12% 8%, rgba(200,173,112,.055), transparent 36%);
+}
+
+nav.fixed {
+  background-color: rgba(10, 29, 21, .94) !important;
+  border-bottom-color: rgba(232, 215, 166, .28) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+::selection { color: #10291d; background: #e8d7a6; }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+}

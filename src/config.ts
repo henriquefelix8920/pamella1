@@ -4,7 +4,7 @@
 export const PRODUCT = {
   name: "Investimento Inicial para Educadores",
   subtitle: "Construa sua Liberdade Financeira",
-  tagline: "Um guia prático para educadores organizarem as finanças, compreenderem os primeiros passos dos investimentos e planejarem o futuro financeiro com mais clareza.",
+  tagline: "Um guia direto para educadores começarem a organizar o dinheiro e entender os primeiros passos dos investimentos — sem precisar ter experiência.",
   // URL do checkout oficial - CONFIRMAR antes de publicar
   checkoutUrl: "https://ps-pamela.hotmart.host/investimento-inicial-para-educadores-construa-sua-liberdade-financeira-a6936b49-be67-439a-a251-99d2fef587b5",
   // Preço - CONFIRMAR valor atual antes de publicar
