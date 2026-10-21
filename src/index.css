@@ -26,3 +26,14 @@
 .hero-copy,.hero-art,.scroll-cue{z-index:3}
 @media(max-width:700px){.hero-video{object-position:60% center;opacity:.34}.hero-video-overlay{background:linear-gradient(90deg,rgba(9,34,25,.91),rgba(13,45,34,.69)),linear-gradient(0deg,rgba(9,32,24,.42),transparent 52%)}}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
+
+/* CTAs dourados flutuantes com brilho sutil, apenas nas ações de acesso ao guia. */
+.cta-gold-float{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#a9822f 0%,#f4df8d 28%,#c5a247 53%,#f7e9ae 72%,#a9822f 100%);background-size:220% 100%;color:#173522;box-shadow:0 8px 22px rgba(174,137,47,.31),inset 0 1px 0 rgba(255,255,255,.58);animation:gold-float 3.2s ease-in-out infinite,gold-sheen 5s ease-in-out infinite}
+.cta-gold-float::before{content:"";position:absolute;z-index:-1;inset:-4px;background:linear-gradient(110deg,transparent 34%,rgba(255,255,229,.72) 48%,transparent 61%);transform:translateX(-130%);animation:gold-glint 4.5s ease-in-out infinite;pointer-events:none}
+.cta-gold-float:hover{background-color:#f0d77f;box-shadow:0 12px 30px rgba(205,169,76,.5),inset 0 1px 0 rgba(255,255,255,.7);animation-play-state:paused}
+.cta-gold-float:focus-visible{outline:3px solid #f8e8ae;outline-offset:4px}
+.mobile-buy>a.cta-gold-float{background:linear-gradient(115deg,#a9822f 0%,#f4df8d 28%,#c5a247 53%,#f7e9ae 72%,#a9822f 100%);background-size:220% 100%;color:#173522}
+@keyframes gold-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes gold-sheen{0%,100%{background-position:100% 50%;box-shadow:0 8px 22px rgba(174,137,47,.27),inset 0 1px 0 rgba(255,255,255,.58)}50%{background-position:0 50%;box-shadow:0 10px 29px rgba(211,178,89,.45),inset 0 1px 0 rgba(255,255,255,.72)}}
+@keyframes gold-glint{0%,55%{transform:translateX(-130%)}80%,100%{transform:translateX(130%)}}
+@media(prefers-reduced-motion:reduce){.cta-gold-float,.cta-gold-float::before{animation:none}.cta-gold-float{background-position:50% 50%}}
