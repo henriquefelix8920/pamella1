@@ -16,7 +16,7 @@ A biografia anterior afirmava aspectos da trajetória pessoal da autora que não
 
 O vídeo era aplicado como fundo ao longo de toda a página, competindo com textos e botões. A estrutura tinha blocos longos com cartões e ícones repetidos, seções com altura mínima de tela e hierarquia tipográfica fraca. O mesmo serifado era usado em quase todo o conteúdo; algumas regras CSS ainda traziam cores roxas e azuis que não combinavam com a identidade verde solicitada.
 
-A imagem `public/foto3.jpg` usada na capa do curso era de um produto diferente, relacionado a curso de moda/social media. Esse recurso foi removido da página e do diretório público. O vídeo de fundo antigo (14 MB) foi arquivado fora de `public/`, evitando sua cópia para o build. O retrato da autora e o logotipo originais foram preservados.
+A imagem `public/foto3.jpg` usada na capa do curso era de um produto diferente, relacionado a curso de moda/social media. Esse recurso foi removido da página e do diretório público. O vídeo original ficou arquivado fora de `public/` após a primeira reformulação; em atualização posterior, uma cópia web otimizada passou a aparecer apenas no hero. O retrato da autora e o logotipo originais foram preservados.
 
 ### Conversão e informação comercial
 
@@ -56,3 +56,8 @@ Revise periodicamente preço, parcelamento e políticas no checkout antes de cam
 - [Página pública da oferta Hotmart](https://ps-pamela.hotmart.host/investimento-inicial-para-educadores-construa-sua-liberdade-financeira-a6936b49-be67-439a-a251-99d2fef587b5)
 - [Checkout oficial da oferta](https://pay.hotmart.com/H107527766S?off=hgr7z00a&hotfeature=51)
 - [21st.dev — referências de componentes para landing pages](https://21st.dev/community/components/s/landing-page)
+
+
+## Atualização posterior — vídeo no hero
+
+A pedido da proprietária, o vídeo original foi reintroduzido apenas como fundo do hero. Para web, foi codificado em H.264, 1280×720, sem faixa de áudio: o arquivo passou de 14,09 MB para 4,16 MB. Um poster estático serve de fallback e o vídeo não é renderizado quando o dispositivo indica preferência por movimento reduzido. A cópia original permanece preservada em `archived-assets/video1.mp4`.
