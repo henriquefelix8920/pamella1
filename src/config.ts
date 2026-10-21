@@ -18,7 +18,7 @@ export const PRODUCT = {
     role: "Professora da rede pública de Minas Gerais",
     photo: "/foto1.webp"
   },
-  logo: "/foto2.webp",
+  logo: "/foto2-192.webp",
   materials: [
     {
       title: "Manual / Guia Principal",

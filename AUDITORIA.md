@@ -61,3 +61,28 @@ Revise periodicamente preço, parcelamento e políticas no checkout antes de cam
 ## Atualização posterior — vídeo no hero
 
 A pedido da proprietária, o vídeo original foi reintroduzido apenas como fundo do hero. Para web, foi otimizado em H.264, 960×540, sem faixa de áudio: o arquivo passou de 14,09 MB para cerca de 1,93 MB. A imagem de poster foi retirada tanto do fundo quanto do elemento de vídeo para evitar aparência de imagem e vídeo sobrepostos; o vídeo é único meio visual de fundo. As fontes DM Sans e DM Serif Display são servidas localmente em WOFF2; retratos e logo usam WebP. O vídeo continua sem aparecer quando o dispositivo indica preferência por movimento reduzido. A cópia original permanece preservada em `archived-assets/video1.mp4`.
+
+
+## Curadoria de desempenho — 21 de outubro de 2026
+
+### Diagnóstico
+
+O MP4 do hero era o maior recurso isolado: 1.934.682 bytes, H.264, 960×540, 24 fps, 8 segundos, reproduzido em loop. Além do download, o código aplicava saturação e brilho a cada quadro e mantinha uma textura SVG de ruído `feTurbulence` por cima. Esses fatores fazem do vídeo e da composição do hero os candidatos mais fortes para o peso percebido, embora o código sozinho não prove a origem da lentidão em cada aparelho.
+
+O banner rolante não contém animação JavaScript: ele duplica os tópicos e anima apenas `transform` por CSS. Foi restaurado ao visual anterior, com ciclo de 52 segundos e animação desligada para quem prefere movimento reduzido. Portanto, não é o maior custo de rede e tende a ser menos oneroso que decodificar um vídeo contínuo.
+
+O bundle não aponta, por si só, para um gargalo excepcional: JavaScript com 285.298 bytes sem compressão (91.625 bytes gzip), CSS com 29.261 bytes (7.669 bytes gzip), quatro dependências de runtime e fontes locais totalizando 86.248 bytes. As imagens WebP já eram compactas; a miniatura do logo e a foto completa ainda podiam ser ajustadas ao tamanho de uso no hero.
+
+### Ajustes feitos
+
+O vídeo web foi reencodado em H.264 Baseline, 640×360, 24 fps, sem áudio, mantendo os oito segundos e o conteúdo visual. O arquivo caiu para **1.068.601 bytes**, redução de **44,8%** sobre a versão web anterior; cada quadro tem **55,6% menos pixels** para decodificação. O original de 14,09 MB continua preservado em `archived-assets/video1.mp4`.
+
+Removi o filtro de saturação/brilho que incidia sobre cada quadro e retirei a camada SVG de ruído em tela cheia. A opacidade e a sobreposição verde existentes continuam dando contraste à copy, e os círculos radiais, o vídeo como único fundo de mídia, as notas flutuantes, inclinação/volume da capa, animações Framer Motion, CTA dourado e efeitos 3D foram mantidos.
+
+O selo do hero agora carrega um retrato WebP de 128×171 (5.014 bytes), em vez de baixar de imediato a foto completa (102.596 bytes); o retrato completo permanece para a seção da autora, que é lazy-loaded. O logo foi reduzido para 192×192 (3.982 bytes, antes 50.326). A soma bruta do vídeo e dessas duas imagens do primeiro hero caiu de 2.087.604 para 1.077.597 bytes (**48,4%**). O listener passivo da barra de compra móvel também só tenta atualizar o React quando cruza o limiar de visibilidade, não em todos os eventos de rolagem.
+
+### Verificação e ressalvas
+
+No preview desta sessão, o navegador mediu corpo codificado de 1.068.601 bytes (1.068.901 bytes transferidos incluindo cabeçalhos), resolução de 640×360 e filtro computado `none`; o ticker reportou animação `marquee` de 52 segundos. Um teste curto A/B neste browser de sandbox marcou 60 chamadas de `requestAnimationFrame` por segundo e zero quadros de vídeo perdidos tanto com vídeo pausado quanto reproduzindo. Houve uma frame longa em cada amostra. Isso verifica o comportamento no browser de teste, mas **não representa uma medição em celular ou no aparelho da proprietária**, onde GPU, rede e decodificador variam.
+
+A auditoria estática também identificou o `backdrop-filter` do cabeçalho fixo e o brilho dourado animado (inclui `background-position` e sombra) como superfícies potenciais de pintura. Foram mantidos porque são efeitos visuais deliberados e o teste não demonstrou que estejam causando a lentidão relatada. Se ainda houver travamento no aparelho real, a próxima investigação conclusiva é uma gravação de Performance/Network nele, comparando a reprodução do vídeo ligada e pausada e verificando GPU, Paint e frames perdidos.
