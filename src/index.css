@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap');
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400 700;font-display:swap;src:url('/fonts/dm-sans-latin.woff2') format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/dm-serif-regular-latin.woff2') format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:italic;font-weight:400;font-display:swap;src:url('/fonts/dm-serif-italic-latin.woff2') format('woff2')}
 
 :root{font-family:'DM Sans',sans-serif;color:#17392c;background:#f2efe4;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;--ink:#17392c;--deep:#0e2d22;--green:#21563e;--moss:#749376;--mint:#b9c9ad;--paper:#f2efe4;--cream:#e4ddca;--gold:#c3a864;--line:rgba(23,57,44,.16);--serif:'DM Serif Display',Georgia,serif;--page:1240px;scroll-behavior:smooth}
 *{box-sizing:border-box}body{margin:0;min-width:320px;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:#c3a864;color:#17392c}.section-wrap{padding-left:max(6.3vw,24px);padding-right:max(6.3vw,24px)}
@@ -19,12 +21,12 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.ticker-track{animation:none}}
 
 /* Vídeo ambiental restrito ao hero, com fallback estático e contraste para a copy. */
-.hero{background-image:url('/video1-poster.jpg');background-size:cover;background-position:center;isolation:isolate}
-.hero-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.4;filter:saturate(.72) brightness(.72)}
+.hero{background-color:var(--deep);isolation:isolate}
+.hero-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;filter:saturate(.78) brightness(.72)}
 .hero-video-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(9,34,25,.94) 0%,rgba(13,45,34,.84) 44%,rgba(13,45,34,.58) 100%),linear-gradient(0deg,rgba(9,32,24,.4),transparent 48%,rgba(9,32,24,.24))}
 .hero::before,.hero::after,.hero-grain{z-index:2}
 .hero-copy,.hero-art,.scroll-cue{z-index:3}
-@media(max-width:700px){.hero-video{object-position:60% center;opacity:.34}.hero-video-overlay{background:linear-gradient(90deg,rgba(9,34,25,.91),rgba(13,45,34,.69)),linear-gradient(0deg,rgba(9,32,24,.42),transparent 52%)}}
+@media(max-width:700px){.hero-video{object-position:60% center;opacity:1}.hero-video-overlay{background:linear-gradient(90deg,rgba(9,34,25,.91),rgba(13,45,34,.69)),linear-gradient(0deg,rgba(9,32,24,.42),transparent 52%)}}
 @media(prefers-reduced-motion:reduce){.hero-video{display:none}}
 
 /* CTAs dourados flutuantes com brilho sutil, apenas nas ações de acesso ao guia. */

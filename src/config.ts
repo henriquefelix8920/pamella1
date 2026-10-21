@@ -16,9 +16,9 @@ export const PRODUCT = {
   author: {
     name: "Pamella Seixas",
     role: "Professora da rede pública de Minas Gerais",
-    photo: "/foto1.jpg"
+    photo: "/foto1.webp"
   },
-  logo: "/foto2.jpg",
+  logo: "/foto2.webp",
   materials: [
     {
       title: "Manual / Guia Principal",

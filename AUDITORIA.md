@@ -60,4 +60,4 @@ Revise periodicamente preço, parcelamento e políticas no checkout antes de cam
 
 ## Atualização posterior — vídeo no hero
 
-A pedido da proprietária, o vídeo original foi reintroduzido apenas como fundo do hero. Para web, foi codificado em H.264, 1280×720, sem faixa de áudio: o arquivo passou de 14,09 MB para 4,16 MB. Um poster estático serve de fallback e o vídeo não é renderizado quando o dispositivo indica preferência por movimento reduzido. A cópia original permanece preservada em `archived-assets/video1.mp4`.
+A pedido da proprietária, o vídeo original foi reintroduzido apenas como fundo do hero. Para web, foi otimizado em H.264, 960×540, sem faixa de áudio: o arquivo passou de 14,09 MB para cerca de 1,93 MB. A imagem de poster foi retirada tanto do fundo quanto do elemento de vídeo para evitar aparência de imagem e vídeo sobrepostos; o vídeo é único meio visual de fundo. As fontes DM Sans e DM Serif Display são servidas localmente em WOFF2; retratos e logo usam WebP. O vídeo continua sem aparecer quando o dispositivo indica preferência por movimento reduzido. A cópia original permanece preservada em `archived-assets/video1.mp4`.
