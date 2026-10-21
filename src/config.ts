@@ -5,13 +5,13 @@ export const PRODUCT = {
   name: "Investimento Inicial para Educadores",
   subtitle: "Construa sua Liberdade Financeira",
   tagline: "Um guia direto para educadores começarem a organizar o dinheiro e entender os primeiros passos dos investimentos — sem precisar ter experiência.",
-  // URL do checkout oficial - CONFIRMAR antes de publicar
-  checkoutUrl: "https://ps-pamela.hotmart.host/investimento-inicial-para-educadores-construa-sua-liberdade-financeira-a6936b49-be67-439a-a251-99d2fef587b5",
-  // Preço - CONFIRMAR valor atual antes de publicar
+  // Checkout público oficial da oferta Hotmart
+  checkoutUrl: "https://pay.hotmart.com/H107527766S?off=hgr7z00a&hotfeature=51",
+  // Condições consultadas no checkout brasileiro
   price: {
     amount: "R$ 58,40",
     installments: "12x de R$ 6,04",
-    note: "Valores sujeitos a alteração. Consulte o checkout oficial."
+    note: "À vista por R$ 58,40. Em 12x, o checkout informa total de R$ 72,48 (com acréscimo). Confira as condições atualizadas na Hotmart."
   },
   author: {
     name: "Pamella Seixas",
@@ -19,7 +19,6 @@ export const PRODUCT = {
     photo: "/foto1.jpg"
   },
   logo: "/foto2.jpg",
-  heroVideo: "/video1.mp4",
   materials: [
     {
       title: "Manual / Guia Principal",
@@ -69,8 +68,8 @@ export const PRODUCT = {
       answer: "O pagamento é processado pela Hotmart, que aceita cartão de crédito (com possibilidade de parcelamento), boleto bancário e outras formas disponíveis na plataforma."
     },
     {
-      question: "Existe garantia?",
-      answer: "A Hotmart oferece garantia de 7 dias conforme a legislação vigente. Para informações específicas sobre a política de reembolso, consulte os termos no checkout oficial."
+      question: "Como funciona a garantia e o reembolso?",
+      answer: "Confira as condições de garantia e reembolso no checkout oficial e nos termos aplicáveis da Hotmart antes de concluir a compra."
     }
   ]
 } as const;
